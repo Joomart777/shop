@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from django.db import models
 
 
-User = get_user_model() # переопределим встроенную ф-ю по юзерам
+User = get_user_model() # работтает с нашим юзером в переменную, встроенн метод
 
 # Create your models here.
 class Category(models.Model):
