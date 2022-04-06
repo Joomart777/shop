@@ -2,3 +2,5 @@ django
 djangorestframework
 psycopg2-binary
 pillow
+python-decouple
+dj-config-url

@@ -54,7 +54,7 @@ class CustomUser(AbstractUser):
 
     def create_activation_code(self):
         import uuid
-        code = str(uuid.uuid4())
+        code = str(uuid.uuid4()) #рандомно сгенерировался
         self.activation_code = code
 
 
