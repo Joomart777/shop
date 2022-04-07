@@ -211,5 +211,93 @@ class LoginApiView(..)
 --> Каждый вход со своим токеном, для всех юзеров
 
 
+*********>>>>> 
+--> Создадим change password
+
+acc/view-- class changepassw
+serializers -- change pass
+urls
+
+--> Postman --> POST --> Login--> token --> Headers --> Body --> проверим
+olp_passw ..
+password ...
+passwrord_confirm ... OK
+
+БИблиотеки для сокрытия данных своих пароли smtp и тд от емейла:
+python-decouple
+dj-config-url
+
+touch .env
+--env:
+SECRET_KEY = 'django-insecure-41aa_h2kedbp%0@!mkw!#ji(g_mccp$*0%o1v#7l)i504)%lvt'
+DEBUG = True
+
+скопировать с settings и поменять:
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('DEBUG', default=True, cast=bool)
+ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',') 
+
+
+и добавить в .env:
+SECRET_KEY = 'django-insecure-41aa_h2kedbp%0@!mkw!#ji(g_mccp$*0%o1v#7l)i504)%lvt'
+DEBUG = True
+ALLOWED_HOSTS=localhost, 127.0.0.1
+
+
+
+сокрыть БД (все настройки скроет в одну строчку)
+DATABASES = {
+'default': dj_database_url.config(
+    default=config('DATABASE_URL')
+)
+}
+
+--> .env:
+DATABASE_URL = 'postgresql://joomart:1@localhost:5432/shop_db'
+/// удалить лишние пробелы, до и после =
+
+
+... добавить данные smtp из settings
+
+--> далее поменять данные в settings для smtp сделать ссылку на config 
+EMAIL_BACKEND = config('EMAIL_BACKEND')
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+
+
+--> Отправляем на GIT --> 
+git add .
+git commit -m 'added .env'
+push origin master
+
+в Репозиториях нет конфиденц данных наших -- нет папки .env
+
+git log -- Посмотреть историю по отправленным git
+
+Вернуть предыдущ версию из Гита:
+git reset 'название комита'
+git push origin master
+
+******>>>> swagger
+--> import swagger lib
+http://localhost:8000/swagger/ -- для просмотра всех url 
+
+--> setings -- rest_framework
+--> views -- отмена глобальной пагинации -- отмен огранич по кол-ву эл-в по пагинации на стр
+
+--> Postman -- http://localhost:8000/product/?page=2 -- просмотр на 2й стр
+
+--> добавим класс для пагинаций, котор можно навешать на любую пагинацию др страниц:
+pagination_class = LargeResultsSetPagination 
+
+
+
+
+
+
+
 
 

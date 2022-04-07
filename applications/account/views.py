@@ -5,7 +5,7 @@ from django.shortcuts import render
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.views import ObtainAuthToken
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -15,7 +15,8 @@ User = get_user_model()  # для работы с кастомным юзеро�
 
 
 class RegisterApiView(APIView):
-    # POST - переопределяем методо пост, отработает для post
+    # POST - переопределяем метод пост, отработает для post
+    permission_classes = [AllowAny] # на регистр-ю Аутентиф не нужно, для всех
     def post(self, request):
         serializer = RegisterSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
