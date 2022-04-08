@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     #modules
     'rest_framework',
     'rest_framework.authtoken',
-    'drf_yasg'
+    'drf_yasg',
+    'django_filters'
 
 ]
 
@@ -158,8 +159,11 @@ REST_FRAMEWORK = {
 
     # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',  #Пагин
     # 'PAGE_SIZE':2   #до 2х элементов на странице
-    # 'DEFAULT_PERMISIONe
+    # 'DEFAULT_PERMISION_CLASSES':['rest_framework.permissions.IsAuthenticated']
+    # 'DEFAULT_FILTER_BACKENDS':['django_filters.rest_framework.DjangoFilterBackend']   # Добавили Глобально-- теперь можно убрать локально ЛистВью
 }
+
+
 
 
 
