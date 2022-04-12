@@ -18,3 +18,6 @@ class ProductAdmin(admin.ModelAdmin):
     inlines = [
         ImageInAdmin
     ]
+
+
+

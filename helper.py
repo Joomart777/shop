@@ -294,6 +294,17 @@ http://localhost:8000/swagger/ -- для просмотра всех url
 pagination_class = LargeResultsSetPagination 
 
 
+******>>>>> 
+Теория - возможно будут спрашивать в интервью:
+
+MVC -- model view controller (controller -- маршрутизаторы)
+MVT -- model view templates (шаблоны, джанго в основном работает на шаблонах)
+
+DRF - Django Rest Framework  -- бекэнд  чистый 
+
+Rest - Representation State (Правило кода по фреймфорку)
+
+DT - Django Templates (шаблонный Джанго) - самостоятельно
 
 
 
