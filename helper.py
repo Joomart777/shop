@@ -1,7 +1,13 @@
 touch requirements.txt
 pip install -r requirements.txt
+
+
 django-admin startproject shop .
+
+
+
  ./manage.py makemigrations
+ 
 mkdir applications  (Все аккаунты, пароли и тд будут в этой папке, лучше так в одну папку всех)
 cd applications/
 
@@ -27,7 +33,7 @@ databases---  'ENGINE': 'django.db.backends.postgresql',
         'PORT' : 5432,  (порт postgresql)
         
 
- ./manage.py migrate
+ ./manage.py migrate   
 
 добавим классы в product/models:
 class Category(models.Model):
@@ -46,7 +52,7 @@ name = 'applications.product'
  ./manage.py makemigrations
     - Create model Category
 
-./manage.py migrate
+./manage.py migrate   ----> ДЕЛАТЬ МИГРАЦИЮ ПОСЛЕ ОПРЕДЕЛЕНИЯ МОДЕЛЬКИ АККАУНТА Юзера, Иначе Джанго создает своего юзера встроенного.
 
 ./manage.py createsuperuser  --- создать админа, иначе в БД никого нет. Суперюзер - все привилегии неограниченно. Админ
 
@@ -134,6 +140,7 @@ touch .gitignore
 git init
 git add .
  git commit -m 'add product model and CRUD'
+ 
 git remote add origin git@github.com:Joomart777/shop.git  (скопировать связь с SSH c Github)
  git push origin master
 
@@ -203,6 +210,14 @@ class LoginApiView(..)
 --> Postman--> POST--> acc/login --> token  (После логина дается каждому токен на сессию, и с этим токеном работает со своими данными), есть и другие виды токенов, которые меняются по тайму по настройке, в Джанго встроенн на сессию.
 -->Postman --> Headers-->(GET) authorization (with token: Token 1a37516898be44609ab2e403ddff4b35565d579e)
 
+
+Перезапись данных через запросы PUT, PATCH
+
+PUT просто перезаписал бы ресурс целиком - все поменяет по одному запросу.
+
+PATCH не является идемпотентным (одноитоговым) -- то есть поменяет изменения только в запросе.
+
+
 --> Пишем ЛОгаут
 --> logout -- delete --> path
 
@@ -257,6 +272,10 @@ DATABASE_URL = 'postgresql://joomart:1@localhost:5432/shop_db'
 /// удалить лишние пробелы, до и после =
 
 
+В аккаунте google:
+Безпоасность ---> Включить - Ненадежные приложения
+
+
 ... добавить данные smtp из settings
 
 --> далее поменять данные в settings для smtp сделать ссылку на config 
@@ -273,6 +292,24 @@ git add .
 git commit -m 'added .env'
 push origin master
 
+
+
+---
+Если работаем в команде по GIT:
+1. Главный создает проект, делает Pusm master.
+2. Все коннектятся у себя по терминалу к GIT по ssh link
+3. Остальные создают ветку у себя: git branch <self name>
+4. Стягивают к себе master проект: 
+git pull origin master
+5. Делают свои задачи, и отправляют к себе на ветку: git push origin <self name>
+6. Главный создает в Git: Pull Request, и объеденяет все рабочие ветки.
+7. Далее опять остальные стягивают с дополнениями проект:
+git pull origin master
+
+далее работа идет дальше
+ 
+git pull
+---
 в Репозиториях нет конфиденц данных наших -- нет папки .env
 
 git log -- Посмотреть историю по отправленным git
@@ -307,6 +344,9 @@ Rest - Representation State (Правило кода по фреймфорку)
 DT - Django Templates (шаблонный Джанго) - самостоятельно
 
 
+
+
+****>>>>>
 
 
 

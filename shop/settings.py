@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     #Apps
     'applications.product',
     'applications.account',
+    'applications.cart',
 
     #modules
     'rest_framework',
@@ -145,10 +146,10 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_URL = 'media/'
+MEDIA_URL = 'media/'        # Все файлы медиа = хранятся в этой папке
 MEDIA_ROOT = BASE_DIR/'media/'
 
-AUTH_USER_MODEL = 'account.CustomUser' # Встроенного юзера переопределилил - использовать нашего юзера
+AUTH_USER_MODEL = 'account.CustomUser'          # Встроенного юзера переопределилил - использовать нашего юзера
  #Указали, что будем работать с Кастомным юзером
 
 
@@ -174,3 +175,9 @@ EMAIL_PORT = config('EMAIL_PORT')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+
+REDIS_HOST = '127.0.0.1'
+REDIS_PORT = '6379'
+
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND ='redis://localhost:6379'
